@@ -1,16 +1,42 @@
 def squared_sum(a, b)
-  # Q1 CODE HERE
-
+  total = a + b
+  return total * total
 end
 
+
 def sort_array_plus_one(a)
-  # Q2 CODE HERE
+  arr = Array.new
+  counter = 0
+  counter2 = 0
+
+  min = a[counter]
+  while counter < a.length
+
+    while counter2 < a.length
+      if a[counter2] < min
+        min = a[counter2]
+        a[counter], a[counter2] = a[counter2], a[counter]
+      end
+      counter2 = counter2 + 1
+    end
+
+    counter = counter + 1
+    counter2 = counter
+    min = a[counter]
+  end
+
+  i = 0
+  while i < a.length
+    a[i] = a[i] + 1
+    i = i + 1
+  end
+
+  return a
 
 end
 
 def combine_name(first_name, last_name)
-  # Q3 CODE HERE
-
+  return first_name + " " + last_name
 end
 
 def blockin_time(a)
@@ -48,5 +74,5 @@ def scrabble(word)
     y: 4,
     z: 10,
   }
-  # Q5 CODE HERE
+  word.split(//).map! {|n| values[n.intern]}.reduce(:+)
 end
